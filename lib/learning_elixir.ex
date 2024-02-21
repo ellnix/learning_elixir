@@ -37,3 +37,12 @@ with {:ok, n} = MathFunctions.math_api_call("hello")
 do
   IO.puts n
 end
+
+parameters = %{
+  "_csrf_token" => "UR99GwILHTtzbSBUYRwmBVpdeDY/AAAA3K70jEiO9UhgPVwh+d3WYw==",
+  "_utf8" => "✓", 
+  "user" => %{"name" => "Memphis Minnie", "password" => "[FILTERED]", "username" => "minnie"}
+}
+
+password = get_in(parameters, ["user", "password"])
+IO.puts password
