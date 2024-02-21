@@ -46,3 +46,6 @@ parameters = %{
 
 password = get_in(parameters, ["user", "password"])
 IO.puts password
+
+parameters = %{ parameters | "_csrf_token" => nil }
+IO.inspect(parameters)
