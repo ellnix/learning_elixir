@@ -62,3 +62,7 @@ IO.puts first
 [_, second | _] = my_list
 IO.puts second
 
+IO.puts "Updating a map"
+my_map = %{ name: "Mike", city: "NYC" }
+my_map = %{ my_map | name: "John" }
+IO.inspect my_map
