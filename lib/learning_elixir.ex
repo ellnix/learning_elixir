@@ -49,3 +49,9 @@ IO.puts password
 
 parameters = %{ parameters | "_csrf_token" => nil }
 IO.inspect(parameters)
+
+my_list = [1, 2, 3, 4]
+[first | rest] = my_list
+IO.puts first
+[_, second | rest] = my_list
+IO.puts second
