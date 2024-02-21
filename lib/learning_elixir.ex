@@ -23,6 +23,10 @@ defmodule MathFunctions do
   def factorial(n) when n > 0 do
     n * factorial(n-1)
   end
+
+  def double(n \\ 1), do: n * 2
 end
 
 IO.puts MathFunctions.factorial(5)
+IO.puts MathFunctions.double(10)
+IO.puts MathFunctions.double
