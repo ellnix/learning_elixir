@@ -66,3 +66,9 @@ IO.puts "Updating a map"
 my_map = %{ name: "Mike", city: "NYC" }
 my_map = %{ my_map | name: "John" }
 IO.inspect my_map
+
+IO.puts "Lazy evaluation with a stream"
+# result = Enum.map(1..10_000_000, &(&1+1)) |> Enum.take(5)
+result = Stream.map(1..10_000_000, &(&1+1)) |> Enum.take(5)
+IO.inspect result
+
