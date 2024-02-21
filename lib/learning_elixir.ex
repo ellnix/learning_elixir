@@ -26,7 +26,7 @@ defmodule MathFunctions do
 
   def double(n \\ 1), do: n * 2
 
-  def math_api_call(url), do: {:ok, 5}
+  def math_api_call(_url), do: {:ok, 5}
 end
 
 IO.puts "Recursive function"
@@ -57,8 +57,8 @@ IO.inspect(parameters)
 
 IO.puts "Accessing a list"
 my_list = [1, 2, 3, 4]
-[first | rest] = my_list
+[first | _] = my_list
 IO.puts first
-[_, second | rest] = my_list
+[_, second | _] = my_list
 IO.puts second
 
