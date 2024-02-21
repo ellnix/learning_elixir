@@ -25,8 +25,15 @@ defmodule MathFunctions do
   end
 
   def double(n \\ 1), do: n * 2
+
+  def math_api_call(url), do: {:ok, 5}
 end
 
 IO.puts MathFunctions.factorial(5)
 IO.puts MathFunctions.double(10)
 IO.puts MathFunctions.double
+
+with {:ok, n} = MathFunctions.math_api_call("hello")
+do
+  IO.puts n
+end
