@@ -82,7 +82,6 @@ IO.inspect ~w[hello world test]a
 IO.inspect ~w[hello world test]c
 
 IO.puts "Tail recursion with string"
-
 defmodule StringStuff do
   def each(string, func) when is_binary(string) do
     _each(string, func)
@@ -97,3 +96,15 @@ end
 
 StringStuff.each("hello", &(IO.puts/1))
 
+IO.puts "FizzBuzz without control flow"
+
+defmodule FizzBuzz do
+  def upto(n) when n > 0, do: 1..n |> Enum.map(&(fizzwords/1))
+
+  def fizzwords(n), do: fizzbuzz(n, rem(n, 3), rem(n, 5))
+  def fizzbuzz(_, 0, 0), do: 'FizzBuzz'
+  def fizzbuzz(_, 0, _), do: 'Fizz'
+  def fizzbuzz(_, _, 0), do: 'Buzz'
+  def fizzbuzz(n, _, _), do: n
+end
+IO.inspect FizzBuzz.upto(20)
