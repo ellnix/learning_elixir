@@ -81,3 +81,19 @@ IO.inspect ~w[hello world test]
 IO.inspect ~w[hello world test]a
 IO.inspect ~w[hello world test]c
 
+IO.puts "Tail recursion with string"
+
+defmodule StringStuff do
+  def each(string, func) when is_binary(string) do
+    _each(string, func)
+  end
+  defp _each(<<head::utf8, tail::binary>>, func) do
+    func.(head)
+    _each(tail, func)
+  end
+
+  defp _each(<<>>, _func), do: []
+end
+
+StringStuff.each("hello", &(IO.puts/1))
+
