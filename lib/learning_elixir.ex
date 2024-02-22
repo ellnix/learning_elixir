@@ -73,7 +73,11 @@ result = Stream.map(1..10_000_000, &(&1+1)) |> Enum.take(5)
 IO.inspect result
 
 IO.puts "List comprehension format"
-
 thing = for i <- [:hello, "world", :test], {_, count} <- [{:bananas, 5}, {:apples, 6}, {:grapes, 7}], is_atom(i), count > 5, into: [] do { i, count } end
 IO.inspect thing
+
+IO.puts "String sigils"
+IO.inspect ~w[hello world test]
+IO.inspect ~w[hello world test]a
+IO.inspect ~w[hello world test]c
 
