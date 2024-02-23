@@ -18,14 +18,33 @@ defmodule LearningElixir do
 end
 
 defmodule MathFunctions do
+  @moduledoc """
+  A collection of math functions
+  """
+
   def factorial(0), do: 1
 
+  @doc """
+  Recursive factorial function
+
+  ## Examples
+
+      iex> MathFunctions.factorial(5)
+      120
+
+  """
   def factorial(n) when n > 0 do
     n * factorial(n-1)
   end
 
+  @doc """
+  Doubles the provided number
+  """
   def double(n \\ 1), do: n * 2
 
+  @doc """
+  Makes an API call
+  """
   def math_api_call(_url), do: {:ok, 5}
 end
 
