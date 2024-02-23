@@ -6,4 +6,13 @@ defmodule LearningElixirTest do
   test "greets the world" do
     assert LearningElixir.hello() == :world
   end
+
+  test "raises error" do
+    try do
+      MathFunctions.raise_error
+      refute true
+    rescue 
+      _ in RuntimeError -> assert true
+    end
+  end
 end

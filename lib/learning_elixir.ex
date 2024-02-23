@@ -46,6 +46,11 @@ defmodule MathFunctions do
   Makes an API call
   """
   def math_api_call(_url), do: {:ok, 5}
+
+  @doc """
+  Raises an error
+  """
+  def raise_error(), do: raise("Math went wrong")
 end
 
 IO.puts "Recursive function"
