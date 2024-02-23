@@ -128,4 +128,17 @@ rescue
   e in CaseClauseError -> IO.puts("Failed to match!")
 end
 
+IO.puts("Raising errors")
 
+
+try do
+  raise("Random error")
+rescue
+  e in RuntimeError -> IO.puts("raise defaults to RuntimeError")
+end
+
+try do
+  raise(ArgumentError, "Specified error")
+rescue
+  e in ArgumentError -> IO.puts("ArgumentError has been raised")
+end
