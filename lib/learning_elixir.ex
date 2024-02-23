@@ -108,3 +108,24 @@ defmodule FizzBuzz do
   def fizzbuzz(n, _, _), do: n
 end
 IO.inspect FizzBuzz.upto(20)
+
+IO.puts("Using case statements")
+
+case [1, 2, 3] do
+  [x] -> IO.puts("Wrong match")
+  [a, b] -> IO.puts("Wrong match")
+  [a, a, b] -> IO.puts("Wrong match")
+  [a, b, c] -> IO.puts("Correct match: #{a}, #{b}, #{c}")
+end
+
+try do
+  case 1 do
+    0 -> IO.puts("Wrong match")
+    2 -> IO.puts("Wrong match")
+    3 -> IO.puts("Wrong match")
+  end
+rescue
+  e in CaseClauseError -> IO.puts("Failed to match!")
+end
+
+
