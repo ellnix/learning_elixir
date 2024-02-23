@@ -136,9 +136,9 @@ IO.inspect FizzBuzz.upto(20)
 IO.puts("Using case statements")
 
 case [1, 2, 3] do
-  [x] -> IO.puts("Wrong match")
-  [a, b] -> IO.puts("Wrong match")
-  [a, a, b] -> IO.puts("Wrong match")
+  [_x] -> IO.puts("Wrong match")
+  [_a, _b] -> IO.puts("Wrong match")
+  [a, a, _b] -> IO.puts("Wrong match")
   [a, b, c] -> IO.puts("Correct match: #{a}, #{b}, #{c}")
 end
 
@@ -149,20 +149,30 @@ try do
     3 -> IO.puts("Wrong match")
   end
 rescue
-  e in CaseClauseError -> IO.puts("Failed to match!")
+  _e in CaseClauseError -> IO.puts("Failed to match!")
 end
 
 IO.puts("Raising errors")
 
-
 try do
   raise("Random error")
 rescue
-  e in RuntimeError -> IO.puts("raise defaults to RuntimeError")
+  _e in RuntimeError -> IO.puts("raise defaults to RuntimeError")
 end
 
 try do
   raise(ArgumentError, "Specified error")
 rescue
-  e in ArgumentError -> IO.puts("ArgumentError has been raised")
+  _e in ArgumentError -> IO.puts("ArgumentError has been raised")
+end
+
+IO.puts("Function with default params and single param")
+
+defmodule Params do
+
+  def print(a, b \\ 13)
+
+  def print(a, 20), do: IO.puts("One param: #{a} and 20")
+
+  def print(a, b), do: IO.puts("Two params: #{a} #{b}")
 end
