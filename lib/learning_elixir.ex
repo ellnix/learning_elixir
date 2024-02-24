@@ -204,3 +204,9 @@ after_fun = fn
 end
 
 IO.inspect Enum.chunk_while(list, [], chunk_fun, after_fun)
+
+IO.puts("Map with reduce")
+
+list = Enum.to_list(1..10)
+IO.inspect Enum.reverse(Enum.reduce(list, [], fn elem, acc -> [elem * 2|acc] end))
+
