@@ -169,10 +169,34 @@ end
 IO.puts("Function with default params and single param")
 
 defmodule Params do
-
   def print(a, b \\ 13)
 
   def print(a, 20), do: IO.puts("One param: #{a} and 20")
 
   def print(a, b), do: IO.puts("Two params: #{a} #{b}")
 end
+
+IO.puts("Parsing string to integer")
+
+IO.inspect Integer.parse("ABC15", 16)
+IO.inspect Integer.parse("ABC15", 14)
+IO.inspect Integer.parse("ABC15")
+IO.inspect Integer.parse("15ABC15")
+
+IO.puts("chunk_while/4 does not behave")
+
+list = [1, 2, 3, 4, 10, 11, 12, 20, 21, 30, 32, 42, 43, 44, 45, 48, 49]
+
+
+chunk_fun = fn
+  elem, [] -> {:cont, [elem]}
+  elem, [prev | _] = acc when prev + 1 == elem -> {:cont, [elem|acc]}
+  elem, acc -> {:cont, Enum.reverse(acc), [elem]}
+end
+
+after_fun = fn
+  [] -> {:cont, []}
+  acc -> {:cont, Enum.reverse(acc), []}
+end
+
+IO.inspect Enum.chunk_while(list, [], chunk_fun, after_fun)
