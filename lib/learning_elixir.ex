@@ -210,3 +210,10 @@ IO.puts("Map with reduce")
 list = Enum.to_list(1..10)
 IO.inspect Enum.reverse(Enum.reduce(list, [], fn elem, acc -> [elem * 2|acc] end))
 
+IO.puts("Custom sigil")
+
+
+import MySigils
+
+IO.puts ~p/hello world/
+IO.puts ~p/hello.com world/u
