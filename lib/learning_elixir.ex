@@ -182,11 +182,15 @@ IO.inspect Integer.parse("ABC15", 16)
 IO.inspect Integer.parse("ABC15", 14)
 IO.inspect Integer.parse("ABC15")
 IO.inspect Integer.parse("15ABC15")
+try do
+  IO.inspect String.to_integer("15ABC15")
+rescue
+  _e in ArgumentError -> IO.puts "String.to_integer is strict"
+end
 
 IO.puts("chunk_while/4 does not behave")
 
 list = [1, 2, 3, 4, 10, 11, 12, 20, 21, 30, 32, 42, 43, 44, 45, 48, 49]
-
 
 chunk_fun = fn
   elem, [] -> {:cont, [elem]}
