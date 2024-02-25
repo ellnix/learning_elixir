@@ -217,3 +217,14 @@ import MySigils
 
 IO.puts ~p/hello world/
 IO.puts ~p/hello.com world/u
+
+IO.puts "Enum.reduce_while/3"
+
+list = Enum.to_list(1..10)
+IO.inspect Enum.reduce_while(list, 0, 
+  fn 
+    elem, acc when elem > 6 -> {:halt, acc}
+    elem, acc -> {:cont, acc + elem}
+  end
+)
+
