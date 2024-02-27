@@ -46,3 +46,10 @@ IO.inspect Enum.reduce_while(list, 0,
 Learning.chapter "Enum.group_by/2"
 IO.inspect Enum.group_by(list, fn elem -> rem(elem, 3) end)
 
+Learning.chapter "Enum.into/2 (keyword list to map)"
+kw_list = [a: 1, b: 2, c: 3, d: 4]
+IO.inspect Enum.into(kw_list, Map.new)
+
+Learning.chapter "Enum.into/3 (keyword list to map)"
+kw_list = [a: 1, b: 2, c: 3, d: 4]
+IO.inspect Enum.into(kw_list, Map.new, fn {k, v} -> { String.upcase(to_string(k)), v * 2 } end)
