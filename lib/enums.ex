@@ -35,7 +35,6 @@ IO.puts("Custom sigil")
 
 Learning.chapter "Enum.reduce_while/3"
 
-
 list = Enum.to_list(1..10)
 IO.inspect Enum.reduce_while(list, 0, 
   fn 
@@ -43,4 +42,7 @@ IO.inspect Enum.reduce_while(list, 0,
     elem, acc -> {:cont, acc + elem}
   end
 )
+
+Learning.chapter "Enum.group_by/2"
+IO.inspect Enum.group_by(list, fn elem -> rem(elem, 3) end)
 
